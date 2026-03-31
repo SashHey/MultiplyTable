@@ -3,6 +3,7 @@ package com.example.multiplicationtables
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,12 +17,16 @@ class MainActivity : AppCompatActivity() {
 
         //added variable to hold the multiplication button
         val multiplyBtn = findViewById<Button>(R.id.calcBtn)
+        //added variable to hold the user's input
+        val numInput = findViewById<EditText>(R.id.numTxtInput)
+
         //added a listener to listen for when the button is clicked
         multiplyBtn.setOnClickListener {
             //created a variable to hold the switch between pages/screens
             val intent = Intent(this, Table::class.java)
                 /*when this is called, the current/home page is closed and the multiplication table
                 page is opened */
+            intent.putExtra("tableNumber", numInput.text.toString())
             startActivity(intent)
         }
 
