@@ -1,5 +1,6 @@
 package com.example.multiplicationtables
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -13,7 +14,16 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        //added variable to hold the multiplication button
         val multiplyBtn = findViewById<Button>(R.id.calcBtn)
+        //added a listener to listen for when the button is clicked
+        multiplyBtn.setOnClickListener {
+            //created a variable to hold the switch between pages/screens
+            val intent = Intent(this, Table::class.java)
+                /*when this is called, the current/home page is closed and the multiplication table
+                page is opened */
+            startActivity(intent)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
