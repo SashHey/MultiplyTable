@@ -19,9 +19,22 @@ class Table : AppCompatActivity() {
         val tableNumber = tableString!!.toInt()
         //assigned the text view to a variable to display the times tables
         val multiplyTbl = findViewById<TextView>(R.id.multiplyTableTxt)
-
         var tableDisplay: String  = "$tableNumber x tables\n\n"
+        var count = 1
+
         multiplyTbl.text = tableDisplay
+
+        while (count <= 10){
+            val answer = tableNumber * count
+
+            if (count == 3){
+                count++
+                continue
+            }
+
+            tableDisplay = "$tableNumber x $count = $answer\n"
+            count++
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
