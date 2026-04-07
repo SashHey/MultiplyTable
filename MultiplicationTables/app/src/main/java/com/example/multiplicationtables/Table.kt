@@ -16,9 +16,12 @@ class Table : AppCompatActivity() {
         //receiving data from the main activity
         val bundle: Bundle? = intent.extras
         val tableString = bundle?.getString("tableNumber")
-        val tableNumber = tableString?.toInt()
+        val tableNumber = tableString!!.toInt()
         //assigned the text view to a variable to display the times tables
         val multiplyTbl = findViewById<TextView>(R.id.multiplyTableTxt)
+
+        var tableDisplay: String  = "$tableNumber x tables\n\n"
+        multiplyTbl.text = tableDisplay
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
